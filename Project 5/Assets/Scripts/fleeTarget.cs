@@ -22,10 +22,7 @@ public class fleeTarget : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Vector3 direction = target.position - rb.position;
-        //direction.Normalize();
-        var rotateAmount = Quaternion.LookRotation(target.position - transform.position);
-        rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, rotateAmount, rotateSpeed));
-        rb.velocity = -transform.forward * speed;
+        transform.LookAt(target);
+        transform.position -= transform.forward * speed * Time.deltaTime;
     }
 }
